@@ -1,0 +1,101 @@
+
+books = []
+
+def add_book():
+    book_id = input("Enter book ID: ")
+    title = input("Enter book title: ")
+    author = input("Enter author name: ")
+
+    for book in books:
+        if book["id"] == book_id:
+            print("Book ID already exists!")
+            return
+
+    book = {
+        "id": book_id,
+        "title": title,
+        "author": author,
+        "available": True
+    }
+
+    books.append(book)
+    print("Book added successfully!")
+
+def view_books():
+    if len(books) == 0:
+        print("No books available!")
+    else:
+        for book in books:
+            status = "Available" if book["available"] else "Issued"
+
+            print("\nBook ID:", book["id"])
+            print("Title:", book["title"])
+            print("Author:", book["author"])
+            print("Status:", status)
+
+def search_book():
+    title = input("Enter book title to search: ").lower()
+
+    for book in books:
+        if book["title"].lower() == title:
+            print("Book Found!")
+            print("Book ID:", book["id"])
+            print("Author:", book["author"])
+            return
+
+    print("Book not found!")
+
+def issue_book():
+    book_id = input("Enter book ID to issue: ")
+
+    for book in books:
+        if book["id"] == book_id:
+            if book["available"]:
+                book["available"] = False
+                print("Book issued successfully!")
+            else:
+                print("Book is already issued!")
+            return
+
+    print("Book not found!")
+
+def return_book():
+    book_id = input("Enter book ID to return: ")
+
+    for book in books:
+        if book["id"] == book_id:
+            if not book["available"]:
+                book["available"] = True
+                print("Book returned successfully!")
+            else:
+                print("This book was not issued!")
+            return
+
+    print("Book not found!")
+
+while True:
+    print("\n===== LIBRARY MANAGEMENT SYSTEM =====")
+    print("1. Add Book")
+    print("2. View Books")
+    print("3. Search Book")
+    print("4. Issue Book")
+    print("5. Return Book")
+    print("6. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_book()
+    elif choice == "2":
+        view_books()
+    elif choice == "3":
+        search_book()
+    elif choice == "4":
+        issue_book()
+    elif choice == "5":
+        return_book()
+    elif choice == "6":
+        print("Thank you!")
+        break
+    else:
+        print("Invalid choice!")
