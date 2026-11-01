@@ -1,0 +1,65 @@
+
+questions = [
+    {
+        "question": "Which language is used for AI?",
+        "options": ["A. HTML", "B. Python", "C. CSS", "D. SQL"],
+        "answer": "B"
+    },
+    {
+        "question": "Which data type stores multiple values?",
+        "options": ["A. Integer", "B. Float", "C. List", "D. Boolean"],
+        "answer": "C"
+    },
+    {
+        "question": "Which keyword is used to define a function?",
+        "options": ["A. function", "B. define", "C. fun", "D. def"],
+        "answer": "D"
+    },
+    {
+        "question": "Which loop runs while a condition is true?",
+        "options": ["A. for", "B. while", "C. if", "D. break"],
+        "answer": "B"
+    },
+    {
+        "question": "Which data type stores key-value pairs?",
+        "options": ["A. List", "B. Tuple", "C. Dictionary", "D. Set"],
+        "answer": "C"
+    }
+]
+
+score = 0
+
+print("===== PYTHON QUIZ APPLICATION =====")
+
+for i, q in enumerate(questions, start=1):
+
+    print("\nQuestion", i)
+    print(q["question"])
+
+    for option in q["options"]:
+        print(option)
+
+    user_answer = input("Enter your answer (A/B/C/D): ").upper()
+
+    if user_answer == q["answer"]:
+        print("Correct answer!")
+        score += 1
+    else:
+        print("Wrong answer!")
+        print("Correct answer:", q["answer"])
+
+percentage = (score / len(questions)) * 100
+
+print("\n===== QUIZ RESULT =====")
+print("Total Questions:", len(questions))
+print("Correct Answers:", score)
+print("Wrong Answers:", len(questions) - score)
+print("Final Score:", score, "/", len(questions))
+print("Percentage:", percentage, "%")
+
+if percentage >= 80:
+    print("Excellent performance!")
+elif percentage >= 50:
+    print("Good job!")
+else:
+    print("Keep practising!")
