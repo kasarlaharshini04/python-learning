@@ -1,0 +1,59 @@
+
+name = input("Enter student name: ")
+
+n = int(input("Enter number of subjects: "))
+
+subjects = []
+marks = []
+
+total = 0
+
+for i in range(n):
+    subject = input("Enter subject name: ")
+    mark = int(input("Enter marks: "))
+
+    subjects.append(subject)
+    marks.append(mark)
+
+    total = total + mark
+
+average = total / n
+
+max_marks = marks[0]
+min_marks = marks[0]
+
+highest_subject = subjects[0]
+lowest_subject = subjects[0]
+
+for i in range(n):
+    if marks[i] > max_marks:
+        max_marks = marks[i]
+        highest_subject = subjects[i]
+
+    if marks[i] < min_marks:
+        min_marks = marks[i]
+        lowest_subject = subjects[i]
+
+if all(mark >= 35 for mark in marks):
+    result = "PASS"
+else:
+    result = "FAIL"
+
+print("\n========== STUDENT REPORT CARD ==========")
+
+print("Student Name:", name)
+print("-----------------------------------------")
+
+for i in range(n):
+    print(subjects[i], ":", marks[i])
+
+print("-----------------------------------------")
+print("Total Marks:", total)
+print("Average:", average)
+print("Highest Marks:", max_marks)
+print("Highest Subject:", highest_subject)
+print("Lowest Marks:", min_marks)
+print("Lowest Subject:", lowest_subject)
+print("Result:", result)
+
+print("=========================================")
